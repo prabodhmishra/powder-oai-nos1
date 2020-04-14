@@ -17,7 +17,7 @@ do
     echo Failed to update, retrying
 done
 
-while ! sudo DEBIAN_FRONTEND=noninteractive apt-get install -y libuhd-dev linux-tools-$(uname -r)
+while ! sudo DEBIAN_FRONTEND=noninteractive apt-get install -y cmake libuhd-dev linux-tools-$(uname -r)
 do
     echo Failed to get gnuradio, retrying
 done
