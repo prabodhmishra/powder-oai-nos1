@@ -8,10 +8,10 @@ if [ ! -f ~/enb.conf ]; then
     VLANIP=$(ip addr list "$VLANIF" | grep "inet " | cut -d' ' -f6|cut -d/ -f1)
     EPCIP=$VLANIP
 
-    cp ci-scripts/conf_files/enb.band7.tm1.25PRB.usrpb210.conf ~/enb.conf
-    sed -i -e "s/CI_MME_IP_ADDR/$EPCIP/" ~/enb.conf
-    sed -i -e "s/CI_ENB_IP_ADDR/$VLANIP/" ~/enb.conf
-    sed -i -e "s/eth0/$VLANIF/" ~/enb.conf
+    cp /local/repository/etc/enb.conf /local/enb.conf
+    sed -i -e "s/CI_MME_IP_ADDR/$EPCIP/" /local/enb.conf
+    sed -i -e "s/CI_ENB_IP_ADDR/$VLANIP/" /local/enb.conf
+    sed -i -e "s/eth0/$VLANIF/" /local/enb.conf
 fi
 
 git checkout v1.2.1
