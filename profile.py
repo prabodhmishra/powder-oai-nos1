@@ -8,11 +8,11 @@ import geni.rspec.emulab.pnext as PN
 
 tourDescription = """
 
-# TDD Development Profile
+# FDD Development Profile
 
 Use this profile for FDD development and testing in a controlled RF environment
-(SDRs with wired connections). It instantiates and OAI LTE network in noS1 mode.
-It is largely based on
+(SDRs with wired connections). It instantiates an OAI LTE network in noS1 mode,
+and is largely based on
 [this](https://gitlab.eurecom.fr/oai/openairinterface5g/wikis/HowToConnectOAIENBWithOAIUEWithoutS1Interface)
 tutorial.
 
@@ -37,7 +37,7 @@ cd /local/repository
 
 This will install the necessary software and configuration files on each node.
 It may take several minutes. The script will exit on error; make sure it
-completes on all three nodes before moving on. These changes will persist after
+completes on both nodes before moving on. These changes will persist after
 rebooting the nodes, so you only need to do this the first time the nodes boot.
 
 ### Starting the end-to-end network
@@ -49,9 +49,12 @@ on `enb1`, and after a few moments on `rue1` (the order is important here):
 cd /local/repository
 ./start.sh
 ```
-### Testing
 
-#### Ping the UE
+After both nodes start, the `enb1` will have a tunnel interface `oaitun_enb`
+with IP address `10.0.1.1`, and `rue1` (if it has succussfully synchronized with
+`enb1`) will have a tunnel interface `oaitun_ue1` with IP address `10.0.1.2`.
+You can test the link using these IP addresses.
+
 """
 
 

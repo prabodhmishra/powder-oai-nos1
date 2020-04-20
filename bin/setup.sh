@@ -33,4 +33,7 @@ do
     echo Failed to clone openairinterface5g, retrying
 done
 
+set -ux
+./tune-cpu.sh
+
 echo "Host setup complete!"
