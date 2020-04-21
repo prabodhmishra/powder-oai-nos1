@@ -8,15 +8,16 @@ import geni.rspec.emulab.pnext as PN
 
 tourDescription = """
 
-# FDD Development Profile
-
-Use this profile for FDD development and testing in a controlled RF environment
-(SDRs with wired connections). It instantiates an OAI LTE network in noS1 mode,
-and is largely based on
+This profile allocates hardware resources for deploying an OAI eNB and UE in
+**noS1** mode (no core network) in a controlled RF environment on the POWDER
+platform. The inlcuded scripts automate node setup, building the OAI binaries,
+and starting the nework. The steps followed in these scripts are largely based
+on
 [this](https://gitlab.eurecom.fr/oai/openairinterface5g/wikis/HowToConnectOAIENBWithOAIUEWithoutS1Interface)
 tutorial.
 
-The following nodes will be deployed:
+The following nodes will be deployed with the TX/RX and RX2 ports on the B210s
+connected via an attenuator matrix:
 
 * Intel NUC5300/B210 w/ OAI UE (`rue1`)
 * Intel NUC5300/B210 w/ OAI eNB (`enb1`)
@@ -25,7 +26,7 @@ The following nodes will be deployed:
 
 tourInstructions = """
 
-### Preliminary setup after the experiment becomes ready
+#### Preliminary setup after the experiment becomes ready
 
 After the nodes boot for the first time, do the following on `rue1` and `enb`:
 
@@ -38,9 +39,9 @@ cd /local/repository
 This will install the necessary software and configuration files on each node.
 It may take several minutes. The script will exit on error; make sure it
 completes on both nodes before moving on. These changes will persist after
-rebooting the nodes, so you only need to do this the first time the nodes boot.
+reboot.
 
-### Starting the end-to-end network
+#### Starting the end-to-end network
 
 After the preliminary setup has completed without error, do the following, first
 on `enb1`, and after a few moments on `rue1` (the order is important here):
