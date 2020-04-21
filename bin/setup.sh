@@ -34,6 +34,6 @@ do
 done
 
 set -ux
-./tune-cpu.sh
+/local/repository/bin/tune-cpu.sh
 
 echo "Host setup complete!"
