@@ -31,7 +31,7 @@ tourInstructions = """
 After the nodes boot for the first time, do the following on `rue1` and `enb`:
 
 ```
-cd /local/repository
+cd /local/repository/bin
 ./setup.sh
 ./build.sh
 ```
@@ -47,7 +47,7 @@ After the preliminary setup has completed without error, do the following, first
 on `enb1`, and after a few moments on `rue1` (the order is important here):
 
 ```
-cd /local/repository
+cd /local/repository/bin
 ./start.sh
 ```
 
