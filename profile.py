@@ -95,23 +95,23 @@ rue1_enb1_rf = rue1.addInterface("enb1_rf")
 rue1_enb2_rf = rue1.addInterface("enb2_rf")
 
 # Create the RF link between the UE and eNodeB #1
-rflink1 = request.RFLink("rflink")
+rflink1 = request.RFLink("rflink1")
 rflink1.addInterface(enb1_rue1_rf)
 rflink1.addInterface(rue1_enb1_rf)
 
 # Create the RF link between the UE and eNodeB #2
-rflink2 = request.RFLink("rflink")
+rflink2 = request.RFLink("rflink2")
 rflink2.addInterface(enb2_rue1_rf)
 rflink2.addInterface(rue1_enb2_rf)
 
-link1 = request.Link("lan")
+link1 = request.Link("lan1")
 link1.addNode(rue1)
 link1.addNode(enb1)
 link1.link_multiplexing = True
 link1.vlan_tagging = True
 link1.best_effort = True
 
-link2 = request.Link("lan")
+link2 = request.Link("lan2")
 link2.addNode(rue1)
 link2.addNode(enb2)
 link2.link_multiplexing = True
