@@ -11,8 +11,7 @@ tourDescription = """
 This profile allocates hardware resources for deploying an OAI eNB and UE in
 **noS1** mode (no core network) in a controlled RF environment on the POWDER
 platform. The inlcuded scripts automate node setup, building the OAI binaries,
-and starting the nework. The steps followed in these scripts are largely based
-on
+and starting the nework. The steps followed in these scripts are largely based on
 [this](https://gitlab.eurecom.fr/oai/openairinterface5g/wikis/HowToConnectOAIENBWithOAIUEWithoutS1Interface)
 tutorial.
 
@@ -25,7 +24,7 @@ connected via an attenuator matrix:
 """
 
 tourInstructions = """
-
+[Link](https://gitlab.eurecom.fr/oai/openairinterface5g/wikis/HowToConnectOAIENBWithOAIUEWithoutS1Interface) to the related tutorial page on OAI GitLab page.  
 #### Preliminary setup after the experiment becomes ready
 
 After the nodes boot for the first time, do the following on `rue1` and `enb`:
@@ -51,10 +50,41 @@ cd /local/repository/bin
 ./start.sh
 ```
 
-After both nodes start, the `enb1` will have a tunnel interface `oaitun_enb`
+After both nodes start, the `enb1` will have a tunnel interface `oaitun_enb1`
 with IP address `10.0.1.1`, and `rue1` (if it has succussfully synchronized with
 `enb1`) will have a tunnel interface `oaitun_ue1` with IP address `10.0.1.2`.
 You can test the link using these IP addresses.
+
+##### From eNB node
+```
+ping -I oaitun_enb1 10.0.1.2 
+```
+
+##### From UE node
+```
+ping -I oaitun_ue1 10.0.1.1 
+```
+
+#### Using softscope to view traffic
+
+After the build is successfully done, you can go to the build directory and compile softscope to use on the eNB and the UE nodes:
+
+##### From eNB node
+```
+cd /local/openairinterface5g/cmake_targets/lte_build_oai/build/
+make enbscope
+cd /local/repository/bin
+./start_scope.sh
+```
+
+##### From UE node
+```
+cd /local/openairinterface5g/cmake_targets/lte_build_oai/build/
+make uescope
+cd /local/repository/bin
+./start_scope.sh
+```
+
 
 """
 
