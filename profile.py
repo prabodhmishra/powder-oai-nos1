@@ -56,11 +56,13 @@ with IP address `10.0.1.1`, and `rue1` (if it has succussfully synchronized with
 You can test the link using these IP addresses.
 
 ##### From eNB node
+-------------------
 ```
 ping -I oaitun_enb1 10.0.1.2 
 ```
 
 ##### From UE node
+------------------
 ```
 ping -I oaitun_ue1 10.0.1.1 
 ```
@@ -70,6 +72,7 @@ ping -I oaitun_ue1 10.0.1.1
 After the build is successfully done, you can go to the build directory and compile softscope to use on the eNB and the UE nodes:
 
 ##### From eNB node
+====================
 ```
 cd /local/openairinterface5g/cmake_targets/lte_build_oai/build/
 make enbscope
@@ -78,6 +81,7 @@ cd /local/repository/bin
 ```
 
 ##### From UE node
+==================
 ```
 cd /local/openairinterface5g/cmake_targets/lte_build_oai/build/
 make uescope
