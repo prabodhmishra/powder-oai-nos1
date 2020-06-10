@@ -24,7 +24,8 @@ connected via an attenuator matrix:
 """
 
 tourInstructions = """
-[Link](https://gitlab.eurecom.fr/oai/openairinterface5g/wikis/HowToConnectOAIENBWithOAIUEWithoutS1Interface) to the related tutorial page on OAI GitLab page.  
+[Link](https://gitlab.eurecom.fr/oai/openairinterface5g/wikis/HowToConnectOAIENBWithOAIUEWithoutS1Interface) to the related tutorial page on OAI GitLab page. 
+
 #### Preliminary setup after the experiment becomes ready
 
 After the nodes boot for the first time, do the following on `rue1` and `enb`:
@@ -85,7 +86,7 @@ cd /local/repository/bin
 ```
 
 #### Using Tracer for monitoring
-
+[Link](https://gitlab.eurecom.fr/oai/openairinterface5g/-/wikis/T/basic) to the related page on Tracers in OAI GitLab.
 After the build is successfully done, you can go to the Tracer directory and compile it to use on the eNB and the UE nodes:
 
 **_From eNB node:_**
