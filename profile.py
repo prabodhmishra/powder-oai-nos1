@@ -68,17 +68,18 @@ ping -I oaitun_ue1 10.0.1.1
 
 After the build is successfully done, you can go to the build directory and compile softscope to use on the eNB and the UE nodes:
 
-**_From eNB node_**
+**_From eNB node:_**
 ```
 cd /local/openairinterface5g/cmake_targets/lte_build_oai/build/
 make enbscope
-cd /local/repository/bin
-./start_scope.sh
 ```
-**_From UE node_**
+**_From UE node:_**
 ```
 cd /local/openairinterface5g/cmake_targets/lte_build_oai/build/
 make uescope
+```
+On each node after the `make` process finishes:
+```
 cd /local/repository/bin
 ./start_scope.sh
 ```
@@ -87,19 +88,20 @@ cd /local/repository/bin
 
 After the build is successfully done, you can go to the Tracer directory and compile it to use on the eNB and the UE nodes:
 
-**_From eNB node_**
+**_From eNB node:_**
 ```
 cd /local/openairinterface5g/common/utils/T/tracer
 make
 ./enb -d ../T_messages.txt
-cd /local/repository/bin
-./start_tracer.sh
 ```
-**_From UE node_**
+**_From UE node:_**
 ```
 cd /local/openairinterface5g/common/utils/T/tracer
 make
 ./ue -d ../T_messages.txt
+```
+On each node after the `make` process finishes:
+```
 cd /local/repository/bin
 ./start_tracer.sh
 ```
