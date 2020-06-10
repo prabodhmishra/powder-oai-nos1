@@ -83,6 +83,26 @@ cd /local/repository/bin
 ./start_scope.sh
 ```
 
+#### Using Tracer for monitoring
+
+After the build is successfully done, you can go to the Tracer directory and compile it to use on the eNB and the UE nodes:
+
+**_From eNB node_**
+```
+cd /local/openairinterface5g/common/utils/T/tracer
+make
+./enb -d ../T_messages.txt
+cd /local/repository/bin
+./start_tracer.sh
+```
+**_From UE node_**
+```
+cd /local/openairinterface5g/common/utils/T/tracer
+make
+./ue -d ../T_messages.txt
+cd /local/repository/bin
+./start_tracer.sh
+```
 
 """
 
