@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Run appropriate setup script
+# Run appropriate setup script with tracer
 
 NODE_ID=$(geni-get client_id)
 
