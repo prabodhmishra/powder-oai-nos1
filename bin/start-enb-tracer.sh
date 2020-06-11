@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Start eNB with Tracer
+
 set -eux
 cd /local/openairinterface5g/ || exit
 source oaienv

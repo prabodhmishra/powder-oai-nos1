@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Run appropriate setup script to start with softscope
+# Run appropriate setup script to start with soft scope
 
 NODE_ID=$(geni-get client_id)
 
