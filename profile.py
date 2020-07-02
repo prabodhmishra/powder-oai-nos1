@@ -126,7 +126,7 @@ pc.defineParameter("UE_TYPE", "Choose UE type",
                    portal.ParameterType.STRING, "NUC",[("COTS","OTS UE"),("NUC","USE NUC5300")],
                    longDescription="Input the tupe of UE to use.")
 
-pc.bindParameters()
+params = pc.bindParameters()
 pc.verifyParameters()
 
 request = pc.makeRequestRSpec()
