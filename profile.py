@@ -113,11 +113,19 @@ cd /local/repository/bin
 class GLOBALS(object):
     UBUNTU_1804_IMG = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU18-64-STD"
     UBUNTU_1804_LOW_LATENCY_IMG = "urn:publicid:IDN+emulab.net+image+PowderProfiles:ubuntu1804lowlatency:1"
+    UE_IMG  = URN.Image(PN.PNDEFS.PNET_AM, "PhantomNet:ANDROID444-STD")
+    ADB_IMG = URN.Image(PN.PNDEFS.PNET_AM, "PhantomNet:UBUNTU14-64-PNTOOLS")
     NUC_HWTYPE = "nuc5300"
+    UE_HWTYPE = "nexus5"
 
 
 pc = portal.Context()
-#pc.bindParameters()
+
+pc.defineParameter("UE_TYPE", "Choose UE type",
+                   portal.ParameterType.STRING, "NUC",[("COTS","OTS UE"),("NUC","USE NUC5300")],
+                   longDescription="Input the tupe of UE to use.")
+
+pc.bindParameters()
 pc.verifyParameters()
 
 request = pc.makeRequestRSpec()
@@ -129,12 +137,25 @@ enb1.disk_image = GLOBALS.UBUNTU_1804_LOW_LATENCY_IMG
 enb1.Desire("rf-controlled", 1)
 enb1_rue1_rf = enb1.addInterface("rue1_rf")
 
+if params.UE_TYPE == "NUC": 
 # Add a NUC UE node
-rue1 = request.RawPC("rue1")
-rue1.hardware_type = GLOBALS.NUC_HWTYPE
-rue1.disk_image = GLOBALS.UBUNTU_1804_LOW_LATENCY_IMG
-rue1.Desire("rf-controlled", 1)
-rue1_enb1_rf = rue1.addInterface("enb1_rf")
+    rue1 = request.RawPC("rue1")
+    rue1.hardware_type = GLOBALS.NUC_HWTYPE
+    rue1.disk_image = GLOBALS.UBUNTU_1804_LOW_LATENCY_IMG
+    rue1.Desire("rf-controlled", 1)
+    rue1_enb1_rf = rue1.addInterface("enb1_rf")
+else:
+    # Add a node to act as the ADB target host
+    adb_t = request.RawPC("adb-tgt")
+    adb_t.disk_image = GLOBALS.ADB_IMG
+
+    # Add an OTS (Nexus 5) UE       
+    rue1 = request.RawPC("rue1")
+    rue1.hardware_type = GLOBALS.UE_HWTYPE
+    rue1.disk_image = GLOBALS.UE_IMG
+    rue1.Desire("rf-controlled", 1)
+    rue1.adb_target = "adb-tgt"
+    rue1_enb1_rf = rue1.addInterface("enb1_rf")
 
 # Create the RF link between the UE and eNodeB
 rflink = request.RFLink("rflink")
