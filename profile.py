@@ -67,8 +67,8 @@ class GLOBALS(object):
 
 
 pc = portal.Context()
-#pc.bindParameters()
-#pc.verifyParameters()
+pc.bindParameters()
+pc.verifyParameters()
 
 request = pc.makeRequestRSpec()
 
