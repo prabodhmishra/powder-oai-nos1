@@ -67,8 +67,12 @@ class GLOBALS(object):
 
 
 pc = portal.Context()
-#pc.bindParameters()
-#pc.verifyParameters()
+
+pc.defineParameter("TYPE", "Experiment type",
+                   portal.ParameterType.STRING,"2eNB",[("2eNB","OTS UE with RF attenuator and 2 eNBs")])
+
+pc.bindParameters()
+pc.verifyParameters()
 
 request = pc.makeRequestRSpec()
 
